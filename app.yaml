@@ -1,0 +1,16 @@
+runtime: php82
+env: standard
+
+# Mount Cloud SQL socket
+# beta_settings:
+#   cloud_sql_instances: your-project:asia-southeast2:my-sql-instance
+
+entrypoint: serve public/index.php
+
+env_variables:
+  APP_ENV: production
+  APP_DEBUG: 'false'
+  APP_KEY: base64:…          # hasil dari php artisan key:generate --show
+  # Override jika perlu:
+  SESSION_DRIVER: cookie
+  CACHE_DRIVER: file
