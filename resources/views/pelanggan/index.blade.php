@@ -22,15 +22,18 @@
   <!-- Header -->
   <header class="brand-header text-white py-4 shadow-md">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-xl text-center font-semibold tracking-wide">
+      <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <h1 class="text-xl font-semibold tracking-wide">
           <div class="text-sm opacity-90 mb-1">WELCOME TO</div>
           DHUTA CAR WASH
         </h1>
+        <a href="/" class="inline-block bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition whitespace-nowrap">
+          &larr; Kembali
+        </a>
       </div>
     </div>
   </header>
-
+  
   <main class="container mx-auto px-4 py-6 max-w-4xl">
     <!-- Queue Table -->
     <div class="bg-white rounded-lg shadow-sm border border-gray-200">
@@ -52,16 +55,16 @@
           <tbody class="divide-y divide-gray-200">
             @forelse($antrians as $i => $antrian)
               <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 text-gray-600">{{ $i+1 }}</td>
-                <td class="px-4 py-3 font-medium">{{ $antrian->jenis_kendaraan }}</td>
-                <td class="px-4 py-3 font-mono text-blue-600">{{ $antrian->nomor_plat }}</td>
+                <td class="px-4 py-3 text-gray-600">{{ $antrian->nomor_antrian }}</td>
+                <td class="px-4 py-3 text-gray-600 font-medium">{{ $antrian->jenis_mobil}}</td>
+                <td class="px-4 py-3 font-mono text-gray-600">{{ $antrian->nomor_plat }}</td>
                 <td class="px-4 py-3 text-gray-600">{{ $antrian->karyawan->nama ?? '-' }}</td>
                 <td class="px-4 py-3">
                   @php
                     $statusConfig = [
-                      'antrian' => 'bg-blue-100 text-blue-800',
-                      'dikerjakan' => 'bg-amber-100 text-amber-800',
-                      'selesai' => 'bg-green-100 text-green-800'
+                      'Antrian' => 'bg-yellow-100 text-gray-800',
+                      'Dikerjakan' => 'bg-blue-100 text-gray-800',
+                      'Selesai' => 'bg-green-100 text-gray-800'
                     ];
                     $style = $statusConfig[$antrian->status] ?? 'bg-gray-100 text-gray-800';
                   @endphp
@@ -83,9 +86,9 @@
     </div>
 
     <!-- Refresh Info -->
-    <p class="text-center text-sm text-gray-500 mt-4">
+    {{-- <p class="text-center text-sm text-gray-500 mt-4">
       Halaman diperbarui otomatis setiap 30 detik
-    </p>
+    </p> --}}
   </main>
 
   <!-- Footer -->
@@ -93,9 +96,9 @@
     <div class="container mx-auto px-4 text-center text-sm text-gray-600">
       <p class="mb-2">© 2023 Dhuta Car Wash</p>
       <p>
-        For personal use only • 
-        <a href="https://www.facebook.com/whitepaper/whitepaper" class="text-blue-600 hover:underline">
-          Visit our Facebook
+        
+        <a href="https://www.facebook.com/pencucian.dhuta?locale=id_ID" class="text-blue-600 hover:underline">
+          Kunjungi Facebook Kami
         </a>
       </p>
     </div>
